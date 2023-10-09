@@ -33,7 +33,6 @@ class BreweryClientTest {
 						.returnResult()
 						.getResponseBody();
 		assertNotNull(beerDto);
-		System.out.println("Beer Name: " + beerDto.getBeerName());
 		assertEquals("Galaxy Cat", beerDto.getBeerName());
 	}
 }
