@@ -9,11 +9,11 @@ import reactor.core.publisher.Mono;
 import java.util.UUID;
 
 @ConfigurationProperties(value = "sfg.brewery", ignoreUnknownFields = false)
-@EnableConfigurationProperties(BreweryClient.class)
-public class BreweryClient {
+@EnableConfigurationProperties(BreweryWebClient.class)
+public class BreweryWebClient {
 
 	public static final String BEER_PATH_V1 = "/api/v1/beer/";
-	private String apiHost;
+	private String apiHost = "http://localhost:8080";
 	private final WebClient webClient = WebClient.create(apiHost);
 
 	public Mono<BeerDto> getBeerById(UUID uuid) {

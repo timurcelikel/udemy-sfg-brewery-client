@@ -14,18 +14,15 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.DEFINED_PORT)
 @AutoConfigureWebTestClient
-class BreweryClientTest {
+class BreweryWebClientTest {
 
 	@Autowired
 	WebTestClient webTestClient;
 
-	@Autowired
-	BreweryClient breweryClient;
-
 	@Test
 	void getBeerById() {
 		final BeerDto beerDto =
-				webTestClient.get().uri("http://localhost:8080" + BreweryClient.BEER_PATH_V1 + UUID.randomUUID(), 1)
+				webTestClient.get().uri("http://localhost:8080" + BreweryWebClient.BEER_PATH_V1 + UUID.randomUUID(), 1)
 						.exchange()
 						.expectStatus().isOk()
 						.expectHeader().valueEquals("Content-type", "application/json")
