@@ -1,20 +1,18 @@
 package guru.springframework.breweryclient.web.client;
 
 import guru.springframework.breweryclient.web.model.BeerDto;
-import org.springframework.boot.context.properties.ConfigurationProperties;
-import org.springframework.boot.context.properties.EnableConfigurationProperties;
+import org.springframework.stereotype.Component;
 import org.springframework.web.reactive.function.client.WebClient;
 import reactor.core.publisher.Mono;
 
 import java.util.UUID;
 
-@ConfigurationProperties(value = "sfg.brewery", ignoreUnknownFields = false)
-@EnableConfigurationProperties(BreweryWebClient.class)
+@Component
 public class BreweryWebClient {
 
-	public static final String BEER_PATH_V1 = "/api/v1/beer/";
-	private String apiHost = "http://localhost:8080";
-	private final WebClient webClient = WebClient.create(apiHost);
+	public static final String BEER_PATH_V1 = "http://localhost:8080/api/v1/beer/";
+
+	private final WebClient webClient = WebClient.create(BEER_PATH_V1);
 
 	public Mono<BeerDto> getBeerById(UUID uuid) {
 
@@ -22,9 +20,5 @@ public class BreweryWebClient {
 				.uri(BEER_PATH_V1, uuid.toString())
 				.retrieve()
 				.bodyToMono(BeerDto.class);
-	}
-
-	public void setApiHost(final String apiHost) {
-		this.apiHost = apiHost;
 	}
 }

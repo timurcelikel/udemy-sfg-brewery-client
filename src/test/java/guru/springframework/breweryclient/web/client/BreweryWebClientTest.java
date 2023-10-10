@@ -22,7 +22,7 @@ class BreweryWebClientTest {
 	@Test
 	void getBeerById() {
 		final BeerDto beerDto =
-				webTestClient.get().uri("http://localhost:8080" + BreweryWebClient.BEER_PATH_V1 + UUID.randomUUID(), 1)
+				webTestClient.get().uri(BreweryWebClient.BEER_PATH_V1 + UUID.randomUUID(), 1)
 						.exchange()
 						.expectStatus().isOk()
 						.expectHeader().valueEquals("Content-type", "application/json")
