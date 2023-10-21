@@ -15,6 +15,8 @@
 	<description>Udemy Spring Boot Microservices - Brewery Client Microservice</description>
 	<properties>
 		<java.version>17</java.version>
+		<snakeyaml.version>2.2</snakeyaml.version>
+		<netty.codec.version>4.1.100.Final</netty.codec.version>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -35,6 +37,16 @@
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
 			<optional>true</optional>
+		</dependency>
+		<dependency>
+			<groupId>org.yaml</groupId>
+			<artifactId>snakeyaml</artifactId>
+			<version>${snakeyaml.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>io.netty</groupId>
+			<artifactId>netty-codec-http2</artifactId>
+			<version>${netty.codec.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
