@@ -11,6 +11,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import java.net.URI;
 import java.util.UUID;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.DEFINED_PORT)
@@ -23,8 +24,9 @@ class BreweryRestTemplateClientTest {
 
 	@Test
 	void getBeerById() {
-		BeerDto dto = breweryRestTemplateClient.getBeerById(UUID.randomUUID());
-		assertNotNull(dto);
+		BeerDto beerDto = breweryRestTemplateClient.getBeerById(UUID.randomUUID());
+		assertNotNull(beerDto);
+		assertEquals("Galaxy Cat", beerDto.getBeerName());
 	}
 
 	@Test
